@@ -11,6 +11,10 @@ typedef struct {
     ExprIR** arr;
 } ExprList;
 
+
 void init_expr_list(ExprList* list, size_t size);
+
+
+void expr_list_append(ExprList* list, ExprIR* ir);
 
 #endif //LINUX_JIT_EXPR_LIST_H
