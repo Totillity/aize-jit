@@ -11,6 +11,9 @@ typedef struct {
 } String;
 
 
+#define STRING(lit) (string_from_literal((lit)))
+
+
 String* string_from_literal(char* literal);
 
 

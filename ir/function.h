@@ -2,10 +2,9 @@
 #define LINUX_JIT_FUNCTION_H
 
 #include "../string_table.h"
-#include "expr/expr_list.h"
+#include "expr/expr.h"
 #include "type.h"
-
-typedef struct {} TerminatorIR;
+#include "terminator.h"
 
 typedef struct s_BlockIR {
     struct s_BlockIR* next_block;
@@ -15,16 +14,14 @@ typedef struct s_BlockIR {
 } BlockIR;
 
 typedef struct {
-    TerminatorIR header;
-    String* block;
-
-    BlockIR* pointed;
-} BranchIR;
-
-typedef struct {
     String* name;
     TypeIR return_type;
     BlockIR* blocks;
 } FunctionIR;
+
+
+FunctionIR* create_function(String* name);
+
+BlockIR* add_block(FunctionIR* func, String* name);
 
 #endif //LINUX_JIT_FUNCTION_H

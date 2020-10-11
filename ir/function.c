@@ -13,7 +13,11 @@ FunctionIR* create_function(String* name) {
 BlockIR* add_block(FunctionIR* func, String* name) {
     BlockIR* mem = malloc(sizeof(BlockIR));
     mem->name = name;
+    if (func->blocks == NULL) {
+        func->blocks = mem;
+    }
     mem->next_block = NULL;
     mem->terminator = NULL;
-    mem->exprs =
+    init_expr_list(&mem->exprs, 64);
+    return mem;
 }
